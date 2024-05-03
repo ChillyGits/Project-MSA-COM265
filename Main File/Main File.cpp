@@ -1,16 +1,13 @@
 #include <iostream>
 using namespace std;
 #include "RecordManager.h"
+#include "Menu.h"
 
 
 int main()
 {
-	
-	RecordManager x;
-	x.add_record();
-	x.view_record();
-	x.edit_record();
-	x.delete_record();
+	Menu X;
+	X.display_main_menu();
 	
 
 
