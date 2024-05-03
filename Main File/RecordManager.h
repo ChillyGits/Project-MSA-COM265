@@ -6,7 +6,7 @@ class RecordManager
 {
 	string task_duration, name, address, date_time;
 public : 
-	RecordManager();
+	
 	void add_record();
 	void view_record();
 	void edit_record();

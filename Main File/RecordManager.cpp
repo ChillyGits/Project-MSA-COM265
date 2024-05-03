@@ -1,44 +1,43 @@
 #include "RecordManager.h"
 #include <iostream>
+#include <vector>
 using namespace std;
-int record_amount, record;
-RecordManager* r;
+int record_count(0), record_choice;
+vector <RecordManager> record;	//vector that holds all records	
 
-RecordManager::RecordManager()
-{
-	task_duration = ""; name = ""; address = ""; date_time = "";
-}
+
 void RecordManager::add_record()
 {
+	int record_amount;
 
-	cout << "\nHow many records do you want to save : ?"; cin >> record_amount;
+	cout << "\nHow many records do you want to add? : "; cin >> record_amount;
 	cin.ignore();
-	r = new RecordManager[record_amount];
 	for (int i(0); i < record_amount; i++)
 	{
-		
+		RecordManager temp;
 		cout << "\nEnter the data for records no." << i + 1;
 	
-		cout << "\nName : "; getline(cin,r[i].name);
+		cout << "\nName : "; getline(cin, temp.name);
 		
-		cout << "\nTask Duration : "; getline(cin, r[i].task_duration); 
+		cout << "\nTask Duration : "; getline(cin, temp.task_duration); 
 		
-		cout << "\nAddress : "; getline(cin, r[i].address);
+		cout << "\nAddress : "; getline(cin, temp.address);
 		
-		cout << "\nDate and Time : "; getline(cin, r[i].date_time);
-		
+		cout << "\nDate and Time : "; getline(cin, temp.date_time);
+		record.push_back(temp);
 	}
+	record_count += record_amount;
 }
 void RecordManager::view_record()
 	{
 	cout << "\n--------------------------------------------\nHere is all the saved records : ";
-	for (int i(0); i < record_amount; i++)
+	for (int i(0); i < record_count; i++)
 	{
-		cout << "\nThe data for records no." << record_amount + 1;
-		cout << "\nName : "<<r[i].name;
-		cout << "\nTask Duration : "<< r[i].task_duration;
-		cout << "\nAddress : "<<r[i].address;
-		cout << "\nDate and Time : " <<r[i].date_time;
+		cout << "\nThe data for records no." << i + 1;
+		cout << "\nName : "<<record[i].name;
+		cout << "\nTask Duration : "<< record[i].task_duration;
+		cout << "\nAddress : "<<record[i].address;
+		cout << "\nDate and Time : " <<record[i].date_time;
 	}
 	}
 void RecordManager::edit_record()
@@ -47,27 +46,34 @@ void RecordManager::edit_record()
 	cout << "\n--------------------------------------------\nWhich record would you like to modify? :  "; 
 	do
 	{
-		cin >> record;
-		if ((record - 1) > record_amount)
+		cin >> record_choice;
+		if ((record_choice - 1) > record_count)
 		{
 			cout << "\nInvalid Record - out of bounds \nPlease enter a valid record within bounds : ";
 		}
-	} while (record - 1 > record_amount);
+	} while (record_choice - 1 > record_count);
 
-	cout << "\nEnter the new data for records no." << record;
+	cout << "\nEnter the new data for records no." << record_choice;
+
+
+	cin.ignore();
 	
-	cout << "\nName : "; getline(cin,r[record-1].name);
+	cout << "\nName : "; getline(cin,record[record_choice -1].name);
 	
-	cout << "\nTask Duration : "; getline(cin, r[record-1].task_duration);
+	cout << "\nTask Duration : "; getline(cin, record[record_choice -1].task_duration);
 	
-	cout << "\nAddress : "; getline(cin, r[record-1].address);
+	cout << "\nAddress : "; getline(cin, record[record_choice -1].address);
 	
-	cout << "\nDate and Time : "; getline(cin, r[record-1].date_time);
+	cout << "\nDate and Time : "; getline(cin, record[record_choice -1].date_time);
 	view_record();
 
 	
 }
 void RecordManager::delete_record()
 {
+	cout << "\nWhich record would you like to delete? : "; cin >> record_choice;
 
+	record.erase(record.begin() + (record_choice-1));
+	record_count--;
+	view_record();
 }
