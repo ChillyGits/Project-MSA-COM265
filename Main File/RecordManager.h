@@ -5,7 +5,7 @@ using namespace std;
 class RecordManager
 {
 	string task_duration, name, address, date_time;
-public : 
+protected : 
 	
 	void add_record();
 	void view_record();

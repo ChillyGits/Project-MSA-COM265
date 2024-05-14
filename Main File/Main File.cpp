@@ -2,14 +2,12 @@
 using namespace std;
 #include "RecordManager.h"
 #include "Menu.h"
+#include "PasswordManager.h"
 
 
 int main()
 {
-	Menu X;
-	X.display_main_menu();
-	
-
-
+	Menu x;
+	x.display_main_menu();
 
 }

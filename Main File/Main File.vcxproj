@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClCompile Include="Main File.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="PasswordManager.cpp" />
     <ClCompile Include="RecordManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="PasswordManager.h" />
     <ClInclude Include="RecordManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
