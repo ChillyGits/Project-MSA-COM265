@@ -3,6 +3,7 @@
 #include <vector>
 using namespace std;
 int record_choice;
+string saved_records;
 vector <RecordManager> record;	//vector that holds all records	
 
 
@@ -26,18 +27,25 @@ void RecordManager::add_record()
 		cout << "\nDate and Time : "; getline(cin, temp.date_time);
 		record.push_back(temp);
 	}
+	save_record();
+}
+void RecordManager::save_record()
+{
+	string tempo;
+	for (int i(0); i < record.size(); i++)
+	{
+		tempo += "\nRecords No [" + to_string(i + 1) + "]"
+			+ "\n-------------\n->Name : " + record[i].name
+			+ "\n\n->Task Duration : " + record[i].task_duration
+			+ "\n\n->Address : " + record[i].address
+			+ "\n\n->Date and Time : " + record[i].date_time;
+	}
+	saved_records = tempo;
 }
 void RecordManager::view_record()
 	{
 	cout << "    - {Saved Records} - " << "\n----------------------------------";
-	for (int i(0); i <record.size(); i++)
-	{
-		cout << "\nRecords No [" << i + 1<<"]";
-		cout << "\n-------------\n->Name : "<<record[i].name;
-		cout << "\n\n->Task Duration : "<< record[i].task_duration;
-		cout << "\n\n->Address : "<<record[i].address;
-		cout << "\n\n->Date and Time : " <<record[i].date_time;
-	}
+	cout << saved_records;
 	}
 void RecordManager::edit_record()
 {
@@ -64,6 +72,7 @@ void RecordManager::edit_record()
 	cout << "\nAddress : "; getline(cin, record[record_choice -1].address);
 	
 	cout << "\nDate and Time : "; getline(cin, record[record_choice -1].date_time);
+	save_record();
 	view_record();
 
 	
@@ -73,6 +82,6 @@ void RecordManager::delete_record()
 	cout << "\nWhich record would you like to delete? : "; cin >> record_choice;
 
 	record.erase(record.begin() + (record_choice-1));
-
+	save_record();
 	view_record();
 }

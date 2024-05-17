@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="Main File.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PasswordManager.cpp" />
     <ClCompile Include="RecordManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileHandler.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PasswordManager.h" />
     <ClInclude Include="RecordManager.h" />

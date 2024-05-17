@@ -50,7 +50,9 @@ void Menu::get_user_choice()
 		}
 
 		case 3:
-
+		{
+			break;
+		}
 		case 4:
 			main_menu = false;
 			break;

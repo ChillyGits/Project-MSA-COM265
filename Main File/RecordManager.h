@@ -8,6 +8,7 @@ class RecordManager
 protected : 
 	
 	void add_record();
+	void save_record();
 	void view_record();
 	void edit_record();
 	void delete_record();
