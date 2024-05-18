@@ -1,10 +1,15 @@
 #include "RecordManager.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
 using namespace std;
 int record_choice;
 string saved_records;
 vector <RecordManager> record;	//vector that holds all records	
+string RecordManager::get_record_saved()
+{
+	return saved_records;
+}
 
 
 void RecordManager::add_record()
@@ -84,4 +89,35 @@ void RecordManager::delete_record()
 	record.erase(record.begin() + (record_choice-1));
 	save_record();
 	view_record();
+}
+void RecordManager::read_file_record()
+{
+	string file_path, file_name;
+	cout << "\n\nPlease enter the directory of the file you will read from: "; cin >> file_path;
+	cout << "\n\nPlease enter a name for your text file: "; cin >> file_name;
+	ifstream file((file_path + "/" + file_name + ".txt"));
+	int i(0);
+	if (file.is_open())
+	{
+		do {
+			RecordManager temp;
+
+
+			getline(file, temp.name);
+
+			getline(file, temp.task_duration);
+
+			getline(file, temp.address);
+
+			getline(file, temp.date_time);
+			record.push_back(temp);
+		} while (!file.eof());
+		file.close();
+	}
+	else
+	{
+		cout << "\n\nError reading from file";
+	}
+	
+	save_record();
 }

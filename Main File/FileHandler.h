@@ -1,6 +1,7 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 #include "PasswordManager.h"
+
 class FileHandler : public PasswordManager
 {
 public:

@@ -1,12 +1,12 @@
 ﻿#include "Menu.h"
-#include "PasswordManager.h"
+#include "FileHandler.h"
 #include <iostream>
 using namespace std;
-PasswordManager x;
+FileHandler x;
 
 int user_choice; char repeat_choice;
 
-bool main_menu = false , record_manager = false , pass_manager = false;
+bool main_menu = false , record_manager = false , pass_manager = false, file_handler = false;
 void Menu::display_main_menu()
 {
 	main_menu = false;
@@ -51,6 +51,8 @@ void Menu::get_user_choice()
 
 		case 3:
 		{
+			system("cls");
+			file_handler_choice();
 			break;
 		}
 		case 4:
@@ -156,4 +158,53 @@ void Menu::pass_manager_choice()
 			system("cls");
 		}
 	} while (pass_manager == true);
+	
+}
+void Menu::file_handler_choice()
+{
+	do {
+		cout << "     - {File Handler} - " << "\n----------------------------";
+		pass_manager = false;
+		cout << "\nWhat would you like to do ? : "
+			<< "\n\n[1] - Save to a file\n\n[2] - Read records from file\n\n[3] - Update file\nPlease enter your choice: ";
+		cin >> user_choice;
+		switch (user_choice)
+		{
+		case 1:
+		{
+			x.save_to_file();
+			break;
+
+		}
+		case 2:
+		{
+			x.read_file_record();
+			break;
+		}
+		case 3:
+		{
+			x.update_file();
+			break;
+		}
+
+		default:
+		{
+			cout << "Invalid input";
+			break;
+		}
+		}
+		cout << "\n\ndo you want to do another operation? : \n[y] - yes \n[n] - no, go back to main menu\n";
+		cin >> repeat_choice;
+		if (repeat_choice == 'y' || repeat_choice == 'Y')
+		{
+			file_handler = true;
+			system("cls");
+		}
+		else
+		{
+			file_handler = false;
+			main_menu = true;
+			system("cls");
+		}
+	} while (file_handler == true);
 }

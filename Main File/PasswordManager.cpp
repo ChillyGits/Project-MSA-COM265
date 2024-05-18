@@ -65,5 +65,14 @@ void PasswordManager::delete_record()
 		RecordManager::delete_record();
 
 }
-
+void PasswordManager::read_file_record()
+{
+	if (authentication() == true)
+		RecordManager::read_file_record();
+}
+string PasswordManager::get_record_saved()
+{
+	if (authentication() == true)
+		return RecordManager::get_record_saved();
+}
 

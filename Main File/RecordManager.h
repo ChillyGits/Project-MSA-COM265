@@ -12,6 +12,8 @@ protected :
 	void view_record();
 	void edit_record();
 	void delete_record();
+	string get_record_saved();
+	void read_file_record();
 };
 
 #endif // !RecordManager_h

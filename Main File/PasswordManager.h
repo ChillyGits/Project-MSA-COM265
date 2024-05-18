@@ -13,6 +13,8 @@ public:
 	void view_record();
 	void edit_record();
 	void delete_record();
+	void read_file_record();
+	string get_record_saved();
 protected:
 	bool authentication();
 };
